@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agam Singh Saluja | CS Student Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #0a0a0a;       /* Deep Charcoal Background */
+            --bg-card: #112240;       /* Slightly lighter for cards */
+            --text-primary: #ccd6f6;  /* Off-white text */
+            --text-secondary: #8892b0;/* Muted blue-grey text */
+            --accent: #00f3ff;        /* Neon Cyan */
+            --accent-dim: rgba(0, 243, 255, 0.1);
+            --font-mono: 'Fira Code', monospace;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            font-size: 16px; /* Base font size standardization */
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY UTILITIES --- */
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 24px;
+        }
+
+        /* Helper for cyan text */
+        .accent {
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-weight: 400;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 1rem; /* Increased from 0.85rem */
+            font-family: var(--font-mono);
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* --- BUTTON STYLES --- */
+        .btn-primary {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.75rem 1.25rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.25s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dim);
+            box-shadow: 0 0 20px var(--accent-dim);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline:hover {
+            color: var(--accent);
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 4px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 24px;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin-top: -50px; /* Slight visual optical correction */
+        }
+
+        .code-tag {
+            color: var(--accent);
+            font-family: var(--font-mono);
+            margin-bottom: 20px;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 75px);
+            font-weight: 800;
+            color: #e6f1ff;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: clamp(35px, 6vw, 65px);
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .description {
+            max-width: 580px;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* --- SECTION HEADERS --- */
+        .section-title {
+            font-size: clamp(24px, 4vw, 32px);
+            margin-bottom: 40px;
+            color: #e6f1ff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 300px;
+            height: 1px;
+            background: #233554;
+            margin-left: 20px;
+            opacity: 0.6;
+        }
+        
+        /* Numbering for sections only (01, 02, 03) */
+        .section-num {
+            color: var(--accent);
+            font-family: var(--font-mono);
+            margin-right: 10px;
+            font-weight: 400;
+            font-size: 0.8em;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-category h3 {
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tags span {
+            background: var(--bg-card);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            color: var(--text-primary);
+            transition: 0.2s;
+            cursor: default;
+            border-left: 2px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .tags span:hover {
+            color: var(--accent);
+            border-left: 2px solid var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 6px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: default;
+            position: relative;
+            /* Ensure height allows footer tech list to sit at bottom */
+            display: flex;
+            flex-direction: column; 
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .open-folder {
+            color: var(--accent);
+            font-size: 40px;
+        }
+
+        .card-links a {
+            color: var(--text-primary);
+            font-size: 22px;
+            margin-left: 15px;
+            transition: 0.2s;
+        }
+
+        .card-links a:hover {
+            color: var(--accent);
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #e6f1ff;
+            transition: 0.3s;
+            font-weight: 700;
+        }
+
+        .project-card:hover h3 {
+            color: var(--accent);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            flex-grow: 1; /* Pushes tech-list to bottom */
+        }
+
+        .tech-list {
+            display: flex;
+            gap: 15px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: auto; /* Force to bottom */
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 100px;
+            margin-top: 50px;
+        }
+
+        .contact-section .section-title {
+            justify-content: center;
+        }
+        
+        .contact-section .section-title::after {
+            display: none;
+        }
+
+        .contact-section p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+        }
+
+        .big-btn {
+            padding: 1.25rem 3rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 30px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            background-color: #050505;
+        }
+
+        .socials {
+            margin-bottom: 15px;
+        }
+
+        .socials a {
+            margin: 0 12px;
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            transition: 0.2s;
+        }
+
+        .socials a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+            display: inline-block;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 25px;
+            }
+            
+            .nav-links {
+                display: none; /* Mobile menu hidden for single file simplicity */
+            }
+
+            .container {
+                padding: 80px 25px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .subtitle {
+                font-size: 32px;
+            }
+
+            .section-title::after {
+                width: 100%; /* Line stretches in mobile */
+                margin-left: 15px;
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">&lt;AgamDev /&gt;</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact" class="btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="about" class="hero">
+        <div class="hero-content">
+            <span class="code-tag">Hi, my name is</span>
+            <h1>Agam Singh Saluja.</h1>
+            <h2 class="subtitle">Deploying things on the cloud and beyond.</h2>
+            <p class="description">
+                Computer Science Sophomore driven by curiosity, adaptability, and a passion for building practical, impactful solutions through technology.
+            </p>
+            <div class="cta-group">
+                <a href="#projects" class="btn-primary">View Work</a>
+                <a href="https://linkedin.com/in/agam-singh-saluja" target="_blank" class="btn-outline"><i class="fab fa-linkedin"></i> Linkedin</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="skills" class="container">
+        <h2 class="section-title"><span class="section-num">01.</span> Tech Stack</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="tags">
+                    <span>Python</span>
+                    <span>Java</span>
+                    <span>C</span>
+                    <span>C++</span>
+                    <span>SQL</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks & Libs</h3>
+                <div class="tags">
+                    <span>Spring Boot</span>
+                    <span>Node.js</span>
+                    <span>Django</span>
+                    <span>Tailwind CSS</span>
+                    <span>Pandas</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Tools & Devops</h3>
+                <div class="tags">
+                    <span>Git & GitHub</span>
+                    <span>Docker</span>
+                    <span>Linux (bash)</span>
+                    <span>AWS</span>
+                    <span>PostgreSQL</span>
+                    <span>Grafana</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title"><span class="section-num">02.</span> Featured Projects</h2>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <div class="card-header">
+                    <i class="far fa-folder open-folder"></i>
+                    <div class="card-links">
+                        <a href="https://github.com/agamsinghsaluja" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3>Splitease</h3>
+                <p>A smart expense-splitting application designed to simplify shared finances by tracking group expenses, calculating fair splits, and minimizing settlement confusion with a clean and intuitive workflow.</p>
+                <ul class="tech-list">
+                    <li>Spring Boot</li>
+                    <li>Tailwind CSS</li>
+                    <li>AWS</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <i class="far fa-folder open-folder"></i>
+                    <div class="card-links">
+                        <a href="https://github.com/agamsinghsaluja" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3>CasaValor MX</h3>
+                <p>A data-driven analysis project that explores housing price trends across Mexico to uncover regional patterns, key price drivers, and actionable market insights.</p>
+                <ul class="tech-list">
+                    <li>Python</li>
+                    <li>Pandas</li>
+                    <li>NumPy</li>
+                </ul>
+            </div>
+
+             <div class="project-card">
+                <div class="card-header">
+                    <i class="far fa-folder open-folder"></i>
+                    <div class="card-links">
+                        <a href="https://github.com/agamsinghsaluja" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3>Portfolio V1</h3>
+                <p>The first iteration of my personal portfolio. Built to be fast, accessible, and responsive using modern CSS Grid techniques.</p>
+                <ul class="tech-list">
+                    <li>HTML5</li>
+                    <li>CSS Grid</li>
+                    <li>Docker</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="container contact-section">
+        <h2 class="section-title"><span class="section-num">03.</span> Get In Touch</h2>
+        <p>Have an idea, opportunity, or challenge in mind? Let’s connect and build something impactful together.</p>
+        <a href="mailto:agamsaluja2@gmail.com" class="btn-primary big-btn">Say Hello</a>
+    </section>
+
+    <footer>
+        <div class="socials">
+            <a href="https://github.com/agamsinghsaluja" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/agam-singh-saluja" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/imagamsaluja/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>Designed & Built by Agam Singh Saluja.</p>
+    </footer>
+
+</body>
+</html>
