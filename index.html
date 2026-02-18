@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agam Singh Saluja | CS Student Portfolio</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
-            --bg-dark: #0a0a0a;       /* Deep Charcoal Background */
-            --bg-card: #112240;       /* Slightly lighter for cards */
-            --text-primary: #ccd6f6;  /* Off-white text */
-            --text-secondary: #8892b0;/* Muted blue-grey text */
-            --accent: #00f3ff;        /* Neon Cyan */
+            --bg-dark: #0a0a0a;
+            /* Deep Charcoal Background */
+            --bg-card: #112240;
+            /* Slightly lighter for cards */
+            --text-primary: #ccd6f6;
+            /* Off-white text */
+            --text-secondary: #8892b0;
+            /* Muted blue-grey text */
+            --accent: #00f3ff;
+            /* Neon Cyan */
             --accent-dim: rgba(0, 243, 255, 0.1);
             --font-mono: 'Fira Code', monospace;
             --font-sans: 'Inter', sans-serif;
@@ -37,7 +45,8 @@
             color: var(--text-primary);
             font-family: var(--font-sans);
             line-height: 1.6;
-            font-size: 16px; /* Base font size standardization */
+            font-size: 16px;
+            /* Base font size standardization */
             overflow-x: hidden;
         }
 
@@ -77,7 +86,7 @@
             width: 100%;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo {
@@ -95,7 +104,8 @@
         }
 
         .nav-links a {
-            font-size: 1rem; /* Increased from 0.85rem */
+            font-size: 1rem;
+            /* Increased from 0.85rem */
             font-family: var(--font-mono);
             color: var(--text-primary);
             font-weight: 500;
@@ -138,7 +148,7 @@
 
         .btn-outline:hover {
             color: var(--accent);
-            background-color: rgba(255,255,255,0.05);
+            background-color: rgba(255, 255, 255, 0.05);
             border-radius: 4px;
         }
 
@@ -153,7 +163,8 @@
 
         .hero-content {
             max-width: 1000px;
-            margin-top: 100px; /* Slight visual optical correction */
+            margin-top: 100px;
+            /* Slight visual optical correction */
         }
 
         .code-tag {
@@ -216,7 +227,7 @@
             margin-left: 20px;
             opacity: 0.6;
         }
-        
+
         /* Numbering for sections only (01, 02, 03) */
         .section-num {
             color: var(--accent);
@@ -280,7 +291,7 @@
             position: relative;
             /* Ensure height allows footer tech list to sit at bottom */
             display: flex;
-            flex-direction: column; 
+            flex-direction: column;
             height: 100%;
         }
 
@@ -329,7 +340,8 @@
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 30px;
-            flex-grow: 1; /* Pushes tech-list to bottom */
+            flex-grow: 1;
+            /* Pushes tech-list to bottom */
         }
 
         .tech-list {
@@ -338,7 +350,152 @@
             font-family: var(--font-mono);
             font-size: 0.8rem;
             color: var(--text-secondary);
-            margin-top: auto; /* Force to bottom */
+            margin-top: auto;
+            /* Force to bottom */
+        }
+
+        /* --- EXPERIENCE SECTION --- */
+        .timeline {
+            position: relative;
+            padding-left: 36px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), rgba(0, 243, 255, 0.1));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -43px;
+            /* center on 2px bar: -(padding-left + dot-width/2 + bar-width/2) = -(36 + 5 + 1) = -42, nudge -1 for border */
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent), 0 0 16px rgba(0, 243, 255, 0.4);
+            border: 2px solid var(--bg-dark);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            z-index: 1;
+        }
+
+        .timeline-item:hover::before {
+            box-shadow: 0 0 14px var(--accent), 0 0 30px rgba(0, 243, 255, 0.6), 0 0 50px rgba(0, 243, 255, 0.25);
+            transform: scale(1.35);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #e6f1ff;
+        }
+
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .timeline-company {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .timeline-meta {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            margin-bottom: 14px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 0.97rem;
+            line-height: 1.7;
+        }
+
+        /* --- EDUCATION SECTION --- */
+        .education-card {
+            background-color: var(--bg-card);
+            border-radius: 6px;
+            padding: 2rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border-left: 3px solid var(--accent);
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .education-info h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #e6f1ff;
+            margin-bottom: 6px;
+        }
+
+        .education-info .edu-degree {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .education-info .edu-year {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+        }
+
+        .education-date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            text-align: right;
         }
 
         /* --- CONTACT SECTION --- */
@@ -352,7 +509,7 @@
         .contact-section .section-title {
             justify-content: center;
         }
-        
+
         .contact-section .section-title::after {
             display: none;
         }
@@ -401,9 +558,10 @@
             .navbar {
                 padding: 15px 25px;
             }
-            
+
             .nav-links {
-                display: none; /* Mobile menu hidden for single file simplicity */
+                display: none;
+                /* Mobile menu hidden for single file simplicity */
             }
 
             .container {
@@ -413,19 +571,21 @@
             .hero h1 {
                 font-size: 42px;
             }
-            
+
             .subtitle {
                 font-size: 32px;
             }
 
             .section-title::after {
-                width: 100%; /* Line stretches in mobile */
+                width: 100%;
+                /* Line stretches in mobile */
                 margin-left: 15px;
                 opacity: 0.3;
             }
         }
     </style>
 </head>
+
 <body>
 
     <nav class="navbar">
@@ -434,7 +594,10 @@
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact" class="btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Contact</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact" class="btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Contact</a>
+            </li>
         </ul>
     </nav>
 
@@ -444,11 +607,13 @@
             <h1>Agam Singh Saluja.</h1>
             <h2 class="subtitle">Deploying things on the cloud and beyond.</h2>
             <p class="description">
-                Computer Science Sophomore driven by curiosity, adaptability, and a passion for building practical, impactful solutions through technology.
+                Computer Science Sophomore driven by curiosity, adaptability, and a passion for building practical,
+                impactful solutions through technology.
             </p>
             <div class="cta-group">
                 <a href="#projects" class="btn-primary">View Work</a>
-                <a href="https://linkedin.com/in/agam-singh-saluja" target="_blank" class="btn-outline"><i class="fab fa-linkedin"></i> Linkedin</a>
+                <a href="https://linkedin.com/in/agam-singh-saluja" target="_blank" class="btn-outline"><i
+                        class="fab fa-linkedin"></i> Linkedin</a>
             </div>
         </div>
     </header>
@@ -502,7 +667,9 @@
                     </div>
                 </div>
                 <h3>Splitease</h3>
-                <p>A smart expense-splitting application designed to simplify shared finances by tracking group expenses, calculating fair splits, and minimizing settlement confusion with a clean and intuitive workflow.</p>
+                <p>A smart expense-splitting application designed to simplify shared finances by tracking group
+                    expenses, calculating fair splits, and minimizing settlement confusion with a clean and intuitive
+                    workflow.</p>
                 <ul class="tech-list">
                     <li>Spring Boot</li>
                     <li>Tailwind CSS</li>
@@ -518,7 +685,8 @@
                     </div>
                 </div>
                 <h3>CasaValor MX</h3>
-                <p>A data-driven analysis project that explores housing price trends across Mexico to uncover regional patterns, key price drivers, and actionable market insights.</p>
+                <p>A data-driven analysis project that explores housing price trends across Mexico to uncover regional
+                    patterns, key price drivers, and actionable market insights.</p>
                 <ul class="tech-list">
                     <li>Python</li>
                     <li>Pandas</li>
@@ -526,7 +694,7 @@
                 </ul>
             </div>
 
-             <div class="project-card">
+            <div class="project-card">
                 <div class="card-header">
                     <i class="far fa-folder open-folder"></i>
                     <div class="card-links">
@@ -534,7 +702,8 @@
                     </div>
                 </div>
                 <h3>Portfolio V1</h3>
-                <p>The first iteration of my personal portfolio. Built to be fast, accessible, and responsive using modern CSS Grid techniques.</p>
+                <p>The first iteration of my personal portfolio. Built to be fast, accessible, and responsive using
+                    modern CSS Grid techniques.</p>
                 <ul class="tech-list">
                     <li>HTML5</li>
                     <li>CSS Grid</li>
@@ -545,8 +714,102 @@
         </div>
     </section>
 
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="container">
+        <h2 class="section-title"><span class="section-num">03.</span> Experience</h2>
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">Information Technology Intern</span>
+                    <span class="timeline-date">May 2024 &mdash; Jan 2025</span>
+                </div>
+                <div class="timeline-company">Anagram Foundation</div>
+                <div class="timeline-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Lucknow, UP, India</span>
+                    <span><i class="fas fa-briefcase"></i> Internship &middot; Hybrid</span>
+                    <span><i class="fas fa-clock"></i> 9 months</span>
+                </div>
+                <p class="timeline-desc">Contributed to the planning and execution of webinars empowering senior
+                    citizens through legal and digital literacy, focusing on constitutional rights, government schemes,
+                    and digital access. Supported web content development, accessible presentation design, and backend
+                    assistance for the foundation's digital platforms, gaining practical exposure to tech-for-good and
+                    user-focused digital outreach.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">Intern</span>
+                    <span class="timeline-date">Aug 2021 &mdash; Jul 2022</span>
+                </div>
+                <div class="timeline-company">Saahas</div>
+                <div class="timeline-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Delhi, India</span>
+                    <span><i class="fas fa-briefcase"></i> Internship &middot; Hybrid</span>
+                    <span><i class="fas fa-clock"></i> 1 year</span>
+                </div>
+                <p class="timeline-desc">Worked with an environmental NGO promoting zero-waste lifestyles, gaining
+                    hands-on exposure to waste segregation, composting, and community-level sustainability
+                    interventions. Learned audit methods, grassroots awareness strategies, and behavior-change
+                    communication, strengthening understanding of circular economy principles and sustainable urban
+                    living.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">Intrapreneur</span>
+                    <span class="timeline-date">Aug 2021 &mdash; Dec 2021</span>
+                </div>
+                <div class="timeline-company">Zigii</div>
+                <div class="timeline-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> New Delhi, India</span>
+                    <span><i class="fas fa-briefcase"></i> Part-time &middot; Hybrid</span>
+                    <span><i class="fas fa-clock"></i> 5 months</span>
+                </div>
+                <p class="timeline-desc">Contributed to early-stage fintech product development through market research,
+                    user testing, and cross-functional collaboration. Gained practical exposure to startup workflows,
+                    agile execution, and how strategic product decisions evolve from ideas into real-world solutions.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-title">Summer Intern</span>
+                    <span class="timeline-date">May 2019 &mdash; Jun 2019</span>
+                </div>
+                <div class="timeline-company">Ministry of Environment, Forests &amp; Climate Change (GoI) &mdash; NMNH
+                </div>
+                <div class="timeline-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Delhi, India</span>
+                    <span><i class="fas fa-briefcase"></i> Part-time &middot; On-site</span>
+                    <span><i class="fas fa-clock"></i> 2 months</span>
+                </div>
+                <p class="timeline-desc">Completed a summer internship at the National Museum of Natural History (NMNH),
+                    supporting environmental education, museum curation, and public engagement initiatives. Assisted
+                    with exhibit research, awareness programs, and biodiversity-focused outreach, strengthening
+                    understanding of India's ecological heritage and environmental policy.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="container">
+        <h2 class="section-title"><span class="section-num">04.</span> Education</h2>
+        <div class="education-card">
+            <div class="education-info">
+                <h3>Kalinga Institute of Industrial Technology (KIIT), Bhubaneswar</h3>
+                <div class="edu-degree">Bachelor of Technology &mdash; BTech, Computer Science</div>
+                <div class="edu-year"><i class="fas fa-graduation-cap"></i>&nbsp; 2nd Year &middot; Expected 2028</div>
+            </div>
+            <div class="education-date">
+                <i class="fas fa-calendar-alt"></i>&nbsp; Aug 2024 &mdash; 2028
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="container contact-section">
-        <h2 class="section-title"><span class="section-num">03.</span> Get In Touch</h2>
+        <h2 class="section-title"><span class="section-num">05.</span> Get In Touch</h2>
         <p>Have an idea, opportunity, or challenge in mind? Let’s connect and build something impactful together.</p>
         <a href="mailto:agamsaluja2@gmail.com" class="btn-primary big-btn">Say Hello</a>
     </section>
@@ -561,4 +824,5 @@
     </footer>
 
 </body>
+
 </html>
